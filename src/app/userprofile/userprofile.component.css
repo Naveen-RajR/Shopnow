@@ -59,10 +59,14 @@
     padding: 6px 10px;
     border-radius: 3px;
     border: none;
+    cursor: pointer;
+    
 }
 
 .cartButton:hover{
     background-color:#0077ed;
+    cursor: pointer;
+
 }
 
 .checkout{

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { timeout } from 'rxjs';
 import { AdminService } from '../admin.service';
 import { CartService } from '../cart.service';
 import { UserService } from '../user.service';
@@ -20,7 +22,8 @@ export class UserprofileComponent implements OnInit {
     public userService: UserService,
     public adminService: AdminService,
     public cartService: CartService,
-    public router:Router
+    public router:Router,
+    public toastr:ToastrService
   ) {}
   
   ngOnInit(): any {
@@ -91,7 +94,16 @@ export class UserprofileComponent implements OnInit {
 
     this.cartService.addCart(cartObject).subscribe({
       next:(res)=>{
+        this.toastr.info("added to cart", "",{
+          timeOut:3000,
+          progressBar:true,
+          progressAnimation:"decreasing",
+          positionClass:"toast-top-center",
+          easing:"ease-out",
+          easeTime:1000
+        })
         this.cartService.updateCartCountObservable(this.cartService.getCurrentCartCount()+1);
+
 
         // console.log("this is",res)
         // alert("added to cart");

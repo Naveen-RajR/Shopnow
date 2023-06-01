@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from '../admin.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AdminService } from '../admin.service';
 })
 export class RegisterComponent implements OnInit {
   
-  constructor( public router:Router, public fb:FormBuilder, public adminService:AdminService){}
+  constructor( public router:Router, public fb:FormBuilder, public adminService:AdminService,public toastr:ToastrService){}
 
   userForm!:FormGroup
   errorMessage!:""
@@ -51,7 +52,13 @@ export class RegisterComponent implements OnInit {
           this.errorMessageStatus=false;
           this.router.navigateByUrl('/login')
           // this.errorMessage=res.message
-          this.adminService.openSnackBar('User Created','🎊')
+          this.toastr.success("User Created🎉","",{
+            timeOut:5000,
+            progressBar:true,
+            progressAnimation:'increasing',
+            positionClass:"toast-top-right"
+            
+          })
         }
         else{
           this.errorMessage=res.message
