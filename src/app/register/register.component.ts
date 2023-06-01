@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
           this.errorMessageStatus=false;
           this.router.navigateByUrl('/login')
           // this.errorMessage=res.message
-          this.toastr.success("User Created🎉","",{
+          this.toastr.success("Login here","User Created🎉",{
             timeOut:5000,
             progressBar:true,
             progressAnimation:'increasing',
