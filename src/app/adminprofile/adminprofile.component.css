@@ -1,0 +1,89 @@
+.sticky{
+    position: fixed;
+    bottom:15px ;
+    right:18px;
+    background-color: black;
+    padding:14px 12px;
+    color:white;
+    border-radius: 6px;
+    border: none;
+}
+
+.sticky:hover{
+ transition: ease-in;
+ background-color: rgb(36, 35, 35);
+ transform: scale(1.1);
+}
+
+.alignItems{
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.toggleButton{
+    margin-right:20px ;
+
+}
+
+
+.productCount{
+    margin-right: 22px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 15px;
+    gap: 15px;
+
+}
+.price{
+    color: #333;
+}
+.card{
+    transition: all 0.2s;
+    overflow: hidden;
+}
+
+.card:hover{
+    transform: scale(1.07);
+    border:0.25px solid #333333;
+    
+    
+}
+
+.table{
+    text-transform: capitalize;
+}
+
+
+
+/* .icons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+} */
+
+
+
+button .gridView{
+    padding: 3px 8px;
+    padding-bottom:0px;
+    /* border:none */
+    /* border:1px solid black;
+    border-collapse: collapse; */
+    /* border: 1px solid black; */
+}
+
+button .gridView:hover{
+    /* color: black; image.png */
+    transform: scale(1.08);
+
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: lightgreen;
+}

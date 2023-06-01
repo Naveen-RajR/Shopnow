@@ -1,0 +1,26 @@
+<section>
+  <h5 style="text-align: center;margin-top: 10px;">
+    Enjoy your time, while shopping. if your'e new get <span class="discount">50% off</span> !
+    <span class="time">{{ currentTime|date:'mediumTime' }}</span>
+  </h5>
+</section>
+<br />
+<div class="carousel">
+  <img src="assets/Images/img2.jpg" alt="image2">
+  <img src="assets/Images/img5.jpg" alt="image5">
+  <img src="assets/Images/img6.jpg" alt="image3">
+  <img src="assets/Images/img4.jpg" alt="image4">
+  <img src="assets/Images/img1.jpg" alt="image1">
+  <img src="assets/Images/img3.jpg" alt="image3">
+
+</div>
+<br />
+
+<div class="container" *ngFor="let data of accordion; let i = index">
+  <p class="title" (click)="changeAccordion('ac_' + i)">{{ data.title }}</p>
+
+  <p *ngIf="view_accordion == 'ac_' + i" class="content">{{ data.content }}</p>
+</div>
+
+<br />
+

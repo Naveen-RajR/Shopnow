@@ -1,0 +1,35 @@
+<section class="smallScreen grid  grid-2-cols">
+  <div class="imagealign container">
+    <img class="img2"  src="https://merriam-webster.com/assets/mw/images/article/art-wap-landing-mp-lg/shopping-mall-2855-84ff7f527da5186e88368477c5ecdebc@1x.jpg" alt="">
+    <img class="img1" src="https://images.pexels.com/photos/4062467/pexels-photo-4062467.jpeg?cs=srgb&dl=pexels-erik-mclean-4062467.jpg&fm=jpg" alt="">
+  </div>
+
+
+  <div>
+    <p class="text-danger error" *ngIf="errorMessageStatus">{{errorMessage}}</p>
+    <form [formGroup]="loginForm" #ref="ngForm" (ngSubmit)="loginSubmit()" >
+      <div class="form-check form-check-inline radioButton">
+        <input class="form-check-input" type="radio" formControlName="type" id="inlineRadio1" value="admin">
+        <label class="form-check-label" for="inlineRadio1">ADMIN</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" formControlName="type" id="inlineRadio2" value="user">
+        <label class="form-check-label" for="inlineRadio2">USER</label>
+      </div> <br> <br>
+      <div class="gap">
+        
+        <label for="">Email or User ID:</label>
+        <input type="text"  class="form-control" formControlName="email">
+      </div>
+
+      <div>
+        <label for="">Password:</label>
+        <input type="password" class="form-control" name="" id="" formControlName="password" />
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</section>
+

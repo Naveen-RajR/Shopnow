@@ -1,0 +1,48 @@
+/* .card{
+    padding: 0;
+}
+
+.cardView{
+    text-transform: capitalize;
+    margin-top: 70px;
+    margin-left: 50px;
+    margin-right: 30px;
+    margin-bottom: 5px;
+}
+
+.table{
+    text-transform: capitalize;
+}
+
+
+
+button{
+    display: block;
+    float: right;
+    margin-top: 20px;
+    margin-right: 60px;
+    margin-bottom: 20px;
+   
+    border: 3px solid rgb(0, 0, 0);
+    padding: 8px;
+    background-color: rgba(151, 217, 245, 0.932);
+    color: black;
+    /* font-weight: bold; */
+
+.form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* *{
+    background-color: red;
+}
+
+:host:root{
+    background: red;
+} */
+html{
+    background: red;
+}

@@ -1,0 +1,76 @@
+label{
+    color: grey;
+    margin-left: 3px;
+}
+
+button{
+    display: block;
+    background-color:#0070c9;
+    margin-top: 20px;
+    padding: 4px 15px;
+    border: 1px solid rgb(63, 79, 255);
+    border-radius: 3px;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+
+}
+button:hover{
+    background-color: #0779d6;
+}
+
+select[_ngcontent-khj-c8] {
+    padding: 12px 12px;
+}
+
+
+option{
+    color: grey;
+}
+
+p a{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    margin-top:8px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: grey;
+
+}
+
+p a:hover{
+    color: #0070c9;
+}
+
+/* dateformat{
+    color:rgb(134, 132, 132);
+
+} */
+
+
+.errorMessage{
+    color: rgb(243, 73, 107);
+    font-weight: 600;
+}
+
+
+.userID{
+    color: gray;
+    font-weight: 400;
+    padding-top: 3px;
+
+}
+
+.loginlink{
+    display: inline-block;
+    text-align: end;
+}
+
+.actualLink{
+    color:rgb(232, 60, 95);
+    cursor: pointer;
+    
+}

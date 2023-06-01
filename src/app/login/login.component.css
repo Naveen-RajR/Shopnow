@@ -1,0 +1,103 @@
+.grid {
+    display: grid;
+    margin-top: 62px;
+    /* column-gap: 30px; */
+}
+
+.grid-2-cols {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+/* body{
+    background-color: rgb(118, 24, 24);
+} */
+form{
+    max-width: 300px;
+    margin: auto;
+    margin-top: 48px;
+    text-transform: uppercase;
+    font-weight: bolder;
+
+}
+label{
+    display: inline-block;
+    /* width: 110px; */
+    text-align: left;
+    color: #212529;
+    /* color: #474747; */
+}
+input{
+    overflow: hidden;
+    border: 1.5px solid black;
+}
+
+
+
+button{
+    display: block;
+    float: right;
+    margin-top: 20px;
+    background:linear-gradient(#338de9, #1a7fe6);
+    color: white;
+    border: 1.4px solid #0077CC;
+    padding: 6px 12px;
+    border-radius: 5px;
+    opacity: 0.8;
+}
+button:hover{
+    transform: scale(1.04);
+}
+
+
+.gap{
+    
+    margin-bottom: 20px;
+}
+
+.imagealign{
+    position: relative;
+    top:50px;
+    left: 5px;
+}
+.img1{
+    width: 400px;
+    margin-left: 180px;
+    border-radius: 15px;
+    
+}
+
+.img2{
+    width: 300px;
+    position: absolute;
+    border-radius: 20px;
+    top: 120px;
+    left: 40px;
+
+
+}
+
+.error{
+    text-align: center;
+    margin: 0px;
+    padding: 10px;
+}
+
+.radioButton{
+    margin-bottom:5px ;
+}
+
+
+
+@media screen and (max-width:850px){
+    .imagealign{
+        display: none;
+    }
+    .smallScreen{
+        display: block;
+        
+    }
+
+  
+}
+

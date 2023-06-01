@@ -1,0 +1,88 @@
+*{
+    font-family: 'Nunito';
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+    margin: 20px;
+}
+
+.card{
+    overflow: hidden;
+    transition: all 0.5s;
+}
+.card:hover{
+    transform: scale(1.1);
+    
+}
+
+.name{
+    text-transform: capitalize;
+    margin: 10px;
+    margin-right:12px;
+    color: transparent;
+    background: linear-gradient(0deg,#000000 0%,#1a1a1a 40%,#4d4d4d 55%,#4d4d4d 60%);
+    background-clip:text ;
+    -webkit-background-clip: text;
+    font-family: 'Nunito';
+}
+
+.card{
+    transition: all 0.2s;
+    overflow: hidden;
+}
+
+.price{
+    color: #333333;
+}
+
+.card:hover{
+    transform: scale(1.04);
+    border:0.25px solid #0071e3;
+
+    /* box-shadow: 1px 2px rgb(201, 201, 201); */
+    
+}
+
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 18px;
+}
+
+.cartButton{
+    color:white;
+    background-color:#0071e3;
+    padding: 6px 10px;
+    border-radius: 3px;
+    border: none;
+}
+
+.cartButton:hover{
+    background-color:#0077ed;
+}
+
+.checkout{
+    color: white;
+    background: linear-gradient(0deg,#000000 0%,#1a1a1a 40%,#4d4d4d 55%,#4d4d4d 60%);
+    padding: 5px 17px;
+    border: none;
+    border-radius:4px ;
+}
+
+.checkout:hover{
+    background: #333333e8;
+    color: white;
+
+}
+
+.count{
+    background-color: white;
+    border-radius: 50%;
+    color: black;
+    margin: 3px;
+
+}

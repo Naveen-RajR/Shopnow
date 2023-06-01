@@ -1,0 +1,36 @@
+<div class="flex">
+  <div>
+    <h4 class="text-start name">
+      Hello, {{ currentUser.firstName }} {{ currentUser.lastName }}
+    </h4>
+  </div>
+  <div>
+    <button routerLink="cart" type="button" class="checkout">
+      Checkout
+      <span class="badge text-bg-light count">{{cartCount}}</span>
+    </button>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card m-1 shadow-sm" *ngFor="let product of allproducts">
+    <div class="card-body">
+      <h1 class="card-title fs-6 text-uppercase">
+        {{ product.productName }}
+      </h1>
+
+      <p class="card-text">{{ product.description }}</p>
+      <h4 class="card-text price">From ₹{{ product.productPrice }}</h4>
+
+      <p class="card-text">rating: {{ product.productRating }}</p>
+      <div>
+        <button
+          class="cartButton"
+          (click)="addingToCart(currentUser.firstName, product)"
+        >
+          ADD TO CART
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

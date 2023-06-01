@@ -1,0 +1,268 @@
+<!-- total product count  -->
+<div class="alignItems">
+  <span class="text-end m-3 productCount"
+    >Total products:<b>{{ productCount }}</b></span
+  >
+  <!-- <button class="toggleButton" >Toggle View</button> -->
+  <!-- toggle view -->
+  <div class="toggleButton">
+    <button style="border: none" (click)="showGrid()">
+      <span class="material-symbols-rounded gridView"> grid_view </span>
+    </button>
+    <button style="border: none" (click)="showList()">
+      <span class="material-symbols-rounded gridView"> table </span>
+    </button>
+  </div>
+</div>
+
+<!-- this is cart view -->
+<div class="grid" *ngIf="showCard">
+  <div class="card m-1 shadow-sm" *ngFor="let product of products">
+    <div class="card-body">
+      <h2 class="card-title fs-6 text-uppercase">
+        {{ product.productName }}
+      </h2>
+
+      <p class="card-text">{{ product.description }}</p>
+      <h4 class="card-text price">From ₹{{ product.productPrice }}</h4>
+
+      <p class="card-text">rating: {{ product.productRating }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- this is table view  -->
+<form [formGroup]="editTable">
+  <table
+    class="table table-bordered table-hover container mt-5"
+    *ngIf="showTable"
+  >
+    <thead class="text-center">
+      <tr>
+        <!-- <th>ID</th> -->
+        <th>Name</th>
+        <th class="w-50%">Description</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Edit/Delete</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr *ngFor="let product of products; let i = index">
+        <!-- <td>
+          <span *ngIf="!editProductStatus || editProductIndex !== i">{{
+            product.productId
+            }}</span>
+          <input *ngIf="editProductStatus && editProductIndex == i" type="text" class="form-control"
+            formControlName="productId" />
+        </td> -->
+
+        <td>
+          <span *ngIf="!editProductStatus || editProductIndex !== i">{{
+            product.productName
+          }}</span>
+          <input
+            *ngIf="editProductStatus && editProductIndex == i"
+            type="text"
+            class="form-control"
+            formControlName="productName"
+          />
+        </td>
+        <td>
+          <span *ngIf="!editProductStatus || editProductIndex !== i">{{
+            product.description
+          }}</span>
+          <input
+            *ngIf="editProductStatus && editProductIndex == i"
+            type="text"
+            class="form-control"
+            formControlName="description"
+          />
+        </td>
+        <td>
+          <span *ngIf="!editProductStatus || editProductIndex !== i">{{
+            product.productPrice
+          }}</span>
+          <input
+            *ngIf="editProductStatus && editProductIndex == i"
+            type="text"
+            class="form-control"
+            formControlName="productPrice"
+          />
+        </td>
+        <td>
+          <span *ngIf="!editProductStatus || editProductIndex !== i">{{
+            product.productRating
+          }}</span>
+          <input
+            *ngIf="editProductStatus && editProductIndex == i"
+            type="text"
+            class="form-control"
+            formControlName="productRating"
+          />
+        </td>
+
+        <td class="editDelete">
+          <span *ngIf="!editProductStatus || editProductIndex !== i">
+            <button
+              class="btn btn-outline-warning me-2 btn-sm"
+              (click)="editProduct(i, product)"
+            >
+              edit
+            </button>
+
+            <button
+              class="btn btn-outline-danger btn-sm"
+              (click)="deleteProduct(product._id)"
+            >
+              Delete
+            </button>
+          </span>
+          <span *ngIf="editProductStatus && editProductIndex == i">
+            <button
+              class="btn btn-outline-success btn-sm"
+              (click)="saveProduct()"
+            >
+              save
+            </button>
+          </span>
+        </td>
+
+        <!-- <td>
+          <div
+            class="icons"
+          >
+            <span     >
+
+            <a (click)="editProduct(i,product)"
+              >
+              <i
+                class="fa-regular fa-pen-to-square fa-xl"
+                style="color: #ffb703"
+              ></i>
+          </a>
+
+
+            <a (click)="deleteProduct(product._id)"
+              ><i class="fa-solid fa-trash fa-xl" style="color: #ef233c"></i
+            ></a>
+
+
+          </span>
+
+            <span>
+            <a
+              *ngIf="editProductStatus && editProductIndex == i"
+              (click)="saveProduct()"
+              ><i class="fa-regular fa-check fa-xl" style="color: #025a03"></i
+            ></a></span>
+
+          </div>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+<br />
+
+<!-- add product button  -->
+<div>
+  <button class="sticky" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    ADD PRODUCT
+  </button>
+</div>
+
+<!-- adding products modal  -->
+<!-- Modal -->
+<form
+  [formGroup]="productForm"
+  #ref="ngForm"
+  (ngSubmit)="onProductFormSubmit()"
+>
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-3" id="exampleModalLabel">New Product</h1>
+          <p class="text-danger">{{ errorMessage }}</p>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="">Product ID</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="eg .124"
+              formControlName="productId"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="" class="m-1">Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="eg. watch"
+              formControlName="productName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="" class="m-1">Description</label>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="3"
+              class="form-control"
+              placeholder="the product you might looking..."
+              formControlName="description"
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="" class="m-1">Product price</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="₹1000"
+              formControlName="productPrice"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="" class="m-1">Product rating</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="eg.3.5⭐"
+              formControlName="productRating"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+            (click)="viewProducts()"
+          >
+            Close
+          </button>
+          <button type="submit" data-bs-dismiss="modal" class="btn btn-dark">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

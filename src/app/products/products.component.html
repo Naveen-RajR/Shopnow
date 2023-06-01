@@ -1,0 +1,50 @@
+<!-- 
+<button (click)="toggleView()" >Toggle View</button>
+
+<table
+  class="table table-bordered border-info container mt-5"
+  *ngIf="isTableView"
+>
+  <thead class="text-center">
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of albums">
+      <td>{{ data.title }}</td>
+      <td>$ {{ data.price }}</td>
+      <td>{{ data.category }}</td>
+      <td>{{ data.rating.rate }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<br />
+
+<div class="cardView row row-cols-1 row-cols-md-3 row-cols-lg-4" *ngIf="isCardView">
+  <div class="card g-4 border-info text-center" *ngFor="let data of albums" style="width: 18rem">
+    <div class="card-header border-info">
+     <b>{{ data.category }}</b> 
+    </div>
+    <div class="card-body">{{ data.title }}</div>
+    <div class="card-footer border-info">rating: {{ data.rating.rate }}, count: {{data.rating.count}}</div>
+  </div>
+</div> -->
+
+
+<div class="form">
+  <form action="">
+    <div class="mb-3">
+      <label for="">Username</label>
+      <input type="text">
+    </div>
+    <div>
+      <label for="">Password</label>
+      <input type="text">
+    </div>
+  </form>
+</div>

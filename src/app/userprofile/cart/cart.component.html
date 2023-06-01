@@ -1,0 +1,10 @@
+<div class="grid">
+  <div class="card" *ngFor="let product of cartProducts">
+    <div class="card-body">
+      <p class="card-title">{{ product.productName }}</p>
+      <p>{{ product.description }}</p>
+      <p>{{ product.productPrice }}</p>
+      <p>{{ product.productRating }}</p>
+    </div>
+  </div>
+</div>
