@@ -78,27 +78,21 @@ exports.login= expressAsyncHandler( async (req,res)=>{
 
 })
 
+exports.editUserDetail=expressAsyncHandler(async (req,res)=>{
+  // let findUser=await userModel.findById(req.params.id)
+  // console.log(findUser)
+ 
+  const updatedOne=await userModel.findByIdAndUpdate(req.params.id,req.body,{
+    new:true,
+    runValidators:true
+  })
+  // delete updatedOne.password;
 
-
-
-// const sendTokenResponse =(user,statusCode, res)=>{
-//     //get token
-//     const token = user.getSignedJwtToken();
-  
-//     const options = {
-//       expires: new Date(
-//         Date.now()
-//       ),
-//       httpOnly: true,
-//     };   
-//     res
-//    .status(statusCode)
-//    .cookie('token', token, options)
-//    .json({ 
-//     success: true, 
-//     token 
-//   });
-
-// }
-
-
+  if(!updatedOne){
+    return res.send({message:"error acquired"})
+  }
+  else{
+    res.send({data:updatedOne})
+  }
+  console.log(updatedOne)
+})

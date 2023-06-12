@@ -6,30 +6,30 @@ const jwt = require ('jsonwebtoken')
 const userSchema=new schema({
     firstName:{
         type:String,
-        requied:true,
+        // requied:true,
         min:3
     },
     lastName:{
         type:String,
-        requied:true,
+        // requied:true,
         min:3
     },
     // dob:Date,
     phoneNumber:{
         type:Number,
-        unique:true
+        // unique:true
     },
     email:{
         type:String,
         unique:true,
         lowercase:true,
-        required:true
+        // required:true
     },
     country:String,
     password:{
         type:String,
         min:4,
-        required:true,
+        // required:true,
         // select:false
     }
 })

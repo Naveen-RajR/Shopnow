@@ -25,14 +25,14 @@ export class AdminService {
     return this.hp.post('/user/register',userInfo)
   }
 
-  openSnackBar(message:any,action:any) {
-    this._snackBar.open(message,action, {
-      duration:  5000,
-      verticalPosition:'bottom',
-      horizontalPosition:'start'
+  // openSnackBar(message:any,action:any) {
+  //   this._snackBar.open(message,action, {
+  //     duration:  5000,
+  //     verticalPosition:'bottom',
+  //     horizontalPosition:'start'
       
-    });
-  }
+  //   });
+  // }
 
   loginUser(loginData:any):Observable<any>{
     return this.hp.post('/user/login',loginData)
@@ -49,6 +49,10 @@ export class AdminService {
     this.loginStatus=false;
   }
 
+  updateUser(payload):Observable<any>{
+    console.log("from service",payload)
+    return this.hp.put(`/user/${this.currentUser._id}`,payload)
+  }
 
   // isLoggedIn=new BehaviorSubject(false);
 

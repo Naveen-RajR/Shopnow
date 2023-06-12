@@ -33,9 +33,10 @@ export class RegisterComponent implements OnInit {
 
   
 
-  redirectTo(){
-    this.router.navigateByUrl('/login')
-  }
+  // redirectTo(){
+  //   this.router.navigateByUrl('/login')
+  // }
+  
   loginRedirect(){
     this.router.navigateByUrl('/login')
   }

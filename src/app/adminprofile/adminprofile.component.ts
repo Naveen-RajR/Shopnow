@@ -110,7 +110,7 @@ export class AdminprofileComponent implements OnInit {
   }
 
   //edit operation
-  editProduct(index, product) {
+  editProduct(index:any, product:any) {
     this.editProductStatus = true;
     this.editProductIndex = index;
     this.id = product._id;
@@ -128,7 +128,10 @@ export class AdminprofileComponent implements OnInit {
     this.editProductStatus = false;
     this.editProductIndex = undefined;
     let modifiedObject = this.editTable.value;
+    // console.log("updated Object",modifiedObject,modifiedObject._id)
     modifiedObject.id = this.id;
+    
+    // console.log( modifiedObject.id = this.id)
 
     this.userService.editProduct(modifiedObject).subscribe({
       next: (res) => {
