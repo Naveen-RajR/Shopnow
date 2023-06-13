@@ -3,9 +3,13 @@
 }
 .grid{
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    /* grid-template-columns: repeat(4,1fr); */
     gap: 15px;
     margin: 20px;
+}
+
+.grid-container--fit {
+    grid-template-columns: repeat(auto-fit, minmax(223px, 1fr));
 }
 
 .card{
@@ -105,3 +109,11 @@
 .changeDetails:hover{
     box-shadow: none;
 }
+
+.search input{
+    padding: 5px;
+    color:#1a1a1a;
+}
+
+/* .search input:focus{
+} */

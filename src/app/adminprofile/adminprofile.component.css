@@ -17,7 +17,7 @@
 
 .alignItems{
     display: flex;
-   justify-content: space-between;
+    justify-content: space-between;
     align-items: center;
     margin-left: 15px;
     margin-top: 15px;
@@ -35,11 +35,17 @@
 
 .grid{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-columns: repeat(4, 1fr); */
     margin: 15px;
     gap: 15px;
 
 }
+
+.grid-container--fit {
+    grid-template-columns: repeat(auto-fit, minmax(223px, 1fr));
+}
+
+
 .price{
     color: #333;
 }

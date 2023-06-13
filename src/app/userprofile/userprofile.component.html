@@ -1,22 +1,43 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
 
 <div class="flex">
   <div>
     <h4 class="text-start name">
       Hello, {{ currentUser.firstName }} {{ currentUser.lastName }}
-      <button class="changeDetails" data-bs-toggle="modal" data-bs-target="#exampleModal" >edit profile <span><i class="fa-solid fa-user-pen fa-xs " style="color: #000000;"></i></span></button>
+      <button
+        class="changeDetails"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        edit profile
+        <span
+          ><i class="fa-solid fa-user-pen fa-xs" style="color: #000000"></i
+        ></span>
+      </button>
     </h4>
+  </div>
+  <!-- searchelement -->
+  <div class="search">
+    <input
+      type="text"
+      [(ngModel)]="searchResult"
+      (keyup)="filterSearch()"
+      placeholder="search by product name"
+    />
   </div>
   <div>
     <button routerLink="cart" type="button" class="checkout">
       Checkout
-      <span class="badge text-bg-light count">{{cartCount}}</span>
+      <span class="badge text-bg-light count">{{ cartCount }}</span>
     </button>
   </div>
 </div>
 
-<div class="grid">
-  <div class="card m-1 shadow-sm" *ngFor="let product of allproducts">
+<div class="grid grid-container--fit ">
+  <div class="card m-1 shadow-sm" *ngFor="let product of filteredProducts">
     <div class="card-body">
       <h1 class="card-title fs-6 text-uppercase">
         {{ product.productName }}
@@ -33,57 +54,99 @@
         >
           ADD TO CART
         </button>
-        
       </div>
     </div>
   </div>
+  <div
+    class="text-center text-danger"
+    *ngIf="allproducts.length && filteredProducts.length == 0"
+  >
+    No search results found!
+  </div>
 </div>
-
 
 <!-- to edit user details -->
-<form [formGroup]="editUserDetailsForm" #ref="ngForm" (ngSubmit)="saveChanges()">
-<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Update your details</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row mb-2" >
-          <div class="col">
-            <input type="text" class="form-control" formControlName="firstName" placeholder="firstname">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="lastname" formControlName="lastName">
-          </div>
+<form
+  [formGroup]="editUserDetailsForm"
+  #ref="ngForm"
+  (ngSubmit)="saveChanges()"
+>
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Update your details
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
-        <input type="email" name="" class="form-control mb-2" placeholder="email" formControlName="email">
-        <div class="mb-2">
-          <select class="form-select form-select"  formControlName="country">
-            <!-- <option value="india" >country</option> -->
-            <option value="america">America</option>
-            <option value="india" >India</option>
-            <option value="Japan">Japan</option>
-          </select>
-        </div>
-        <div class="mb-2">
+        <div class="modal-body">
+          <div class="row mb-2">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="firstName"
+                placeholder="firstname"
+              />
+            </div>
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="lastname"
+                formControlName="lastName"
+              />
+            </div>
+          </div>
           <input
-            type="text"
-            class="form-control"
-            placeholder="phone number"
-            formControlName="phoneNumber"
+            type="email"
+            name=""
+            class="form-control mb-2"
+            placeholder="email"
+            formControlName="email"
           />
-         
+          <div class="mb-2">
+            <select class="form-select form-select" formControlName="country">
+              <!-- <option value="india" >country</option> -->
+              <option value="america">America</option>
+              <option value="india">India</option>
+              <option value="Japan">Japan</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="phone number"
+              formControlName="phoneNumber"
+            />
+          </div>
         </div>
-
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+            Save changes
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </form>

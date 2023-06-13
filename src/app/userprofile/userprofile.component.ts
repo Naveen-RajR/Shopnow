@@ -16,21 +16,22 @@ export class UserprofileComponent implements OnInit {
   currentUser: any;
   cartCount: number;
   userProduct: any;
-  cartProducts:any;
-  id:any;
+  cartProducts: any;
   editUserDetailsForm: FormGroup;
+  filteredProducts=[];
+  searchResult:''
   
+
   constructor(
     public userService: UserService,
     public adminService: AdminService,
     public cartService: CartService,
     public router: Router,
     public toastr: ToastrService,
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
   ) {}
 
   ngOnInit(): any {
-
     this.getProducts();
     this.currentUser = this.adminService.currentUser;
     // console.log("user details",this.currentUser)
@@ -52,23 +53,25 @@ export class UserprofileComponent implements OnInit {
       },
     });
 
-    // //for editing user details
-    const userData=this.adminService.currentUser
-    const selectCountry=userData.country
-    this.editUserDetailsForm=this.formBuilder.group({
-      firstName:userData.firstName,
-      lastName:userData.lastName,
-      country:selectCountry,
-      email:userData.email,
-      phoneNumber:userData.phoneNumber
-    })
+    //for editing user details
+    const userData = this.adminService.currentUser;
+    const selectCountry = userData.country;
+    this.editUserDetailsForm = this.formBuilder.group({
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      country: selectCountry,
+      email: userData.email,
+      phoneNumber: userData.phoneNumber,
+    });
 
+   
   }
 
   //to get list of total products
   getProducts() {
     this.userService.getProducts().subscribe({
       next: (res) => {
+        this.filteredProducts=res.data
         this.allproducts = res.data;
         // console.log(this.products);
       },
@@ -105,28 +108,31 @@ export class UserprofileComponent implements OnInit {
     });
   }
 
-  saveChanges(){
-    const formValues=this.editUserDetailsForm.value
-    
-    console.log(formValues)
-    this.adminService.updateUser(formValues).subscribe({
-      next:(res)=>{
-        // console.log(res)
-        this.toastr.success("","Profile Updated🪄",{
-          timeOut:5000,
-          positionClass:'toast-top-right',
-          closeButton:true
-        })
+  saveChanges() {
+    const formValues = this.editUserDetailsForm.value;
 
+    console.log(formValues);
+    this.adminService.updateUser(formValues).subscribe({
+      next: (res) => {
+        // console.log(res)
+        this.toastr.success('', 'Profile Updated🪄', {
+          timeOut: 5000,
+          positionClass: 'toast-top-right',
+          closeButton: true,
+        });
       },
-      error:(error)=>{
-        alert("error occured")
-        console.log(error)
-      }
-    })
-    
-    
+      error: (error) => {
+        alert('error occured');
+        console.log(error);
+      },
+    });
   }
-  
-  
+
+  //to search
+  filterSearch(){
+    this.filteredProducts=this.allproducts.filter(
+      text=>text.productName.toLowerCase().includes(this.searchResult)
+    )
+  }
+
 }

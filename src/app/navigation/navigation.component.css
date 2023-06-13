@@ -1,7 +1,7 @@
-nav{
-  background-color: rgb(0, 0, 0);  
+/* nav{
+  /* background-color: rgb(0, 0, 0);   */
   /* position: sticky; */
-}
+/* } */ 
 
 
 a{
@@ -9,14 +9,14 @@ a{
 }
 
 li a:hover{
-  background-color:#40e0d0;
+  background-color:#353a3a;
   
   color: black;
   border-radius: 5px;
 }
 
 .active{
-  color:#40e0d0;
+  /* color:#40e0d0; */
   font-weight: bold;
   /* background-color: #40e0d0; */
   /* border-radius: 7px; */

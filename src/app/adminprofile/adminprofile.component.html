@@ -14,7 +14,7 @@
 </div>
 
 <!-- this is cart view -->
-<div class="grid" *ngIf="showCard">
+<div class="grid grid-container--fit " *ngIf="showCard">
   <div class="card m-1 shadow-sm" *ngFor="let product of products">
     <div class="card-body">
       <h2 class="card-title fs-6 text-uppercase">
@@ -165,7 +165,7 @@
           </div>
           <div class="mb-3">
             <label for="" class="m-1">Description</label>
-            <textarea name="" id="" cols="30" rows="3" class="form-control"
+            <textarea name="" id="" cols="30" rows="1" class="form-control"
               placeholder="the product you might looking..." formControlName="description"></textarea>
           </div>
           <div class="mb-3">
