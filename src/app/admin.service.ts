@@ -53,6 +53,7 @@ export class AdminService {
     console.log("from service",payload)
     return this.hp.put(`/user/${this.currentUser._id}`,payload)
   }
+  
 
   // isLoggedIn=new BehaviorSubject(false);
 

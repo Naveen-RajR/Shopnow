@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   
   constructor( public router:Router, public fb:FormBuilder, public adminService:AdminService,public toastr:ToastrService){}
 
+  
   userForm!:FormGroup
   errorMessage!:""
   errorMessageStatus!:boolean;
@@ -22,7 +23,6 @@ export class RegisterComponent implements OnInit {
     this.userForm=this.fb.group({
       firstName:'',
       lastName:'',
-      // dob:'',
       country:'',
       phoneNumber:'',
       password:'',
