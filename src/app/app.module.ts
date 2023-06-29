@@ -13,6 +13,7 @@ import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
+import { AdminService } from './admin.service';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { ToastrModule } from 'ngx-toastr';
 
   ],
 
-  providers: [],
+  providers: [AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
