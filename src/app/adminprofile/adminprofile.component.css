@@ -19,8 +19,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 15px;
-    margin-top: 15px;
+    
 }
 
 .toggleButton{
@@ -29,9 +28,7 @@
 }
 
 
-.productCount{
-    margin-right: 22px;
-}
+
 
 .grid{
     display: grid;
@@ -67,29 +64,27 @@
 
 
 
-/* .icons{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-} */
 
 
 
 button .gridView{
     padding: 3px 8px;
     padding-bottom:0px;
-    /* border:none */
-    /* border:1px solid black;
-    border-collapse: collapse; */
-    /* border: 1px solid black; */
+    
 }
 
 button .gridView:hover{
-    /* color: black; image.png */
+    
     transform: scale(1.08);
 
 }
 
 .custom-toggler.navbar-toggler {
     border-color: lightgreen;
+}
+
+
+
+.imageSize{
+    height: 230px;
 }

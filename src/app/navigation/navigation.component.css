@@ -5,19 +5,21 @@
 
 
 a{
-  color: #fff;
+  color: rgb(219, 219, 219);
 }
 
 li a:hover{
   background-color:#ffffff42;
   
-  color: black;
+  color: rgb(255, 255, 255);
   border-radius: 5px;
 }
 
 .active{
-  /* color:#40e0d0; */
-  font-weight: bold;
+  color:#ffffff;
+  font-weight: 1000;
+  background-color: #ffffff2e;
+  border-radius: 8px;
   /* background-color: #40e0d0; */
   /* border-radius: 7px; */
 }

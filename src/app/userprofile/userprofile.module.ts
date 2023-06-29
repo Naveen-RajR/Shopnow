@@ -7,16 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    UserprofileComponent,
-    CartComponent
-  ],
-  imports: [
-    CommonModule,
-    UserprofileRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
-   
-  ]
+    declarations: [
+        UserprofileComponent,
+        CartComponent,
+    ],
+    imports: [
+        CommonModule,
+        UserprofileRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+    ]
 })
 export class UserprofileModule { }

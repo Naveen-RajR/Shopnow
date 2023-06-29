@@ -1,5 +1,8 @@
+
+
+
 <!-- total product count  -->
-<div class="alignItems">
+<div class="alignItems container">
   <span class="text-end m-3 productCount">Total products:<b>{{ productCount }}</b></span>
   <!-- <button class="toggleButton" >Toggle View</button> -->
   <!-- toggle view -->
@@ -13,10 +16,20 @@
   </div>
 </div>
 
+
+
+
+
+
+
+
+
 <!-- this is cart view -->
 <div class="grid grid-container--fit " *ngIf="showCard">
   <div class="card m-1 shadow-sm" *ngFor="let product of products">
+    <img class="img-fluid imageSize" src="{{product.productImage}}" alt="">
     <div class="card-body">
+
       <h2 class="card-title fs-6 text-uppercase">
         {{ product.productName }}
       </h2>
@@ -29,17 +42,24 @@
   </div>
 </div>
 
+
+
+
+
+
+
+
 <!-- this is table view  -->
-<form [formGroup]="editTable">
-  <table class="table table-bordered table-hover container mt-5" *ngIf="showTable">
+<form [formGroup]="editTable" >
+  <table class="table table-bordered table-hover container mt-5 " *ngIf="showTable">
     <thead class="text-center">
       <tr>
         <!-- <th>ID</th> -->
         <th>Name</th>
-        <th class="w-25">Description</th>
+        <th >Description</th>
         <th>Price</th>
         <th>Rating</th>
-        <th>Edit/Delete</th>
+        <th >Edit/Delete</th>
       </tr>
     </thead>
     <tbody class="text-center">
@@ -98,37 +118,7 @@
           </span>
         </td>
 
-        <!-- <td>
-          <div
-            class="icons"
-          >
-            <span     >
-
-            <a (click)="editProduct(i,product)"
-              >
-              <i
-                class="fa-regular fa-pen-to-square fa-xl"
-                style="color: #ffb703"
-              ></i>
-          </a>
-
-
-            <a (click)="deleteProduct(product._id)"
-              ><i class="fa-solid fa-trash fa-xl" style="color: #ef233c"></i
-            ></a>
-
-
-          </span>
-
-            <span>
-            <a
-              *ngIf="editProductStatus && editProductIndex == i"
-              (click)="saveProduct()"
-              ><i class="fa-regular fa-check fa-xl" style="color: #025a03"></i
-            ></a></span>
-
-          </div>
-        </td> -->
+        
       </tr>
     </tbody>
   </table>
@@ -136,12 +126,26 @@
 
 <br />
 
+
+
+
+
 <!-- add product button  -->
 <div>
   <button class="sticky" data-bs-toggle="modal" data-bs-target="#exampleModal">
     ADD PRODUCT
   </button>
 </div>
+
+
+
+
+
+
+
+
+
+
 
 <!-- adding products modal  -->
 <!-- Modal -->
@@ -175,6 +179,11 @@
           <div class="mb-3">
             <label for="" class="m-1">Product rating</label>
             <input type="text" class="form-control" placeholder="eg.3.5⭐" formControlName="productRating" />
+          </div>
+          <div class="mb-3">
+            <label for="" class="m-1">Image</label>
+            <input type="file" class="form-control " (change)="onFileSelected($event)"
+              placeholder="upload a image" formControlName="productImage">
           </div>
         </div>
         <div class="modal-footer">

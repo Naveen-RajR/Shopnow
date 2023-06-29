@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ToastrModule } from 'ngx-toastr';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     ProductsComponent,
     RegisterComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(),
 
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

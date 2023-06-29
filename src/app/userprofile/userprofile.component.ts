@@ -19,7 +19,10 @@ export class UserprofileComponent implements OnInit {
   cartProducts: any;
   editUserDetailsForm: FormGroup;
   filteredProducts=[];
+  sortedProducts:any=[];
   searchResult:''
+  isAscending:boolean=true;
+  
   
 
   constructor(
@@ -34,8 +37,10 @@ export class UserprofileComponent implements OnInit {
   ngOnInit(): any {
     this.getProducts();
     this.currentUser = this.adminService.currentUser;
+    const firstName=this.adminService.currentUser.firstName;
+    console.log(firstName)
     // console.log("user details",this.currentUser)
-    this.cartService.getCartProduct(this.currentUser.firstName).subscribe({
+    this.cartService.getCartProduct(firstName).subscribe({
       next: (res) => {
         this.userProduct = res['data'];
         this.cartProducts = this.userProduct?.products;
@@ -73,7 +78,8 @@ export class UserprofileComponent implements OnInit {
       next: (res) => {
         this.filteredProducts=res.data
         this.allproducts = res.data;
-        // console.log(this.products);
+        this.sortedProducts=this.allproducts
+        console.log(this.allproducts,'all products');
       },
       error: (error) => {
         console.log(error);
@@ -86,7 +92,8 @@ export class UserprofileComponent implements OnInit {
       firstName: firstName,
       products: [cartProduct],
     };
-    // console.log("this is cartObject", cartObject)
+    
+    console.log("this is cartObject", cartObject)
     this.cartService.addCart(cartObject).subscribe({
       next: (res) => {
         this.toastr.info('added to cart', '', {
@@ -134,5 +141,18 @@ export class UserprofileComponent implements OnInit {
       text=>text.productName.toLowerCase().includes(this.searchResult)
     )
   }
+
+  onSortChanged(){
+    this.isAscending=!this.isAscending
+    this.filteredProducts.sort((a,b)=>{
+      // console.log(this.sortedProducts,"cloned array")
+      const priceA=a.productPrice;
+      const priceB=b.productPrice;
+      console.table(priceA,priceB)
+      return this.isAscending?priceA-priceB:priceB-priceA
+    })
+  }
+
+
 
 }

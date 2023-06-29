@@ -3,8 +3,8 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 />
 
-<div class="flex">
-  <div>
+<!-- <div class="parent container">
+  <div class="child">
     <h4 class="text-start name">
       Hello, {{ currentUser.firstName }} {{ currentUser.lastName }}
       <button
@@ -19,8 +19,9 @@
       </button>
     </h4>
   </div>
-  <!-- searchelement -->
-  <div class="search">
+
+ 
+  <div class="search child">
     <input
       type="text"
       [(ngModel)]="searchResult"
@@ -28,16 +29,59 @@
       placeholder="search by product name"
     />
   </div>
-  <div>
+
+  <div class="child">
+    <button (click)="onSortChanged()">sort by price{{isAscending?' ⬆️' :' ⬇️'}}</button>
+  </div>
+
+  <div class="child">
     <button routerLink="cart" type="button" class="checkout">
       Checkout
       <span class="badge text-bg-light count">{{ cartCount }}</span>
     </button>
   </div>
+
+</div> -->
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <div class="d-flex justify-content-center align-items-center">
+        <span class="name">Welcome, {{ currentUser.firstName }} {{ currentUser.lastName }}</span>
+        <button
+        class="changeDetails"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >edit &nbsp; <span
+          ><i class="fa-solid fa-user-pen fa-xs" style="color: #000000"></i
+        ></span>
+      </button>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <div class="d-flex justify-content-center align-items-center">
+        <input class="search"
+        type="text"
+        [(ngModel)]="searchResult"
+        (keyup)="filterSearch()"
+        placeholder="search by product name "
+        />
+        <button routerLink="cart" type="button" class="checkout mx-2">
+          Checkout
+          <span class="badge text-bg-light count">{{ cartCount }}</span>
+        </button>
+      </div>
+
+
+    </div>
+  </div>
 </div>
+
+
 
 <div class="grid grid-container--fit ">
   <div class="card m-1 shadow-sm" *ngFor="let product of filteredProducts">
+    <img class="img-fluid imageSize" src="{{product.productImage}}" alt="">
     <div class="card-body">
       <h1 class="card-title fs-6 text-uppercase">
         {{ product.productName }}

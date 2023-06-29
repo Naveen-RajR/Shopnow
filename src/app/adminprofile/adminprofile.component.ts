@@ -20,6 +20,7 @@ export class AdminprofileComponent implements OnInit {
   editProductStatus: boolean = false;
   editProductIndex: number;
   id: any;
+  selectedFile:File;
   editTable: FormGroup;
   
   constructor(
@@ -39,6 +40,7 @@ export class AdminprofileComponent implements OnInit {
       description: '',
       productPrice: '',
       productRating: '',
+      productImage:''
     });
 
     //for editing
@@ -74,16 +76,26 @@ export class AdminprofileComponent implements OnInit {
     }
   }
 
+  onFileSelected(event:any){
+    this.selectedFile=event.target.files[0];
+
+  }
+
   //adding product
   onProductFormSubmit() {
-    console.log(this.productForm.value);
+    // console.log(this.productForm.value);
     const productObject = this.productForm.value;
-    this.userService.createProduct(productObject).subscribe({
+    const formData=new FormData()
+    formData.append('productObject',JSON.stringify(productObject))
+    formData.append('productImage',this.selectedFile)
+    this.userService.createProduct(formData).subscribe({
       next: (res) => {
         if (res.message == 'Product added') {
           this.errorMessageStatus = false;
-          alert("product added")
+          // alert("product added")
+          console.log(res)
           this.viewProducts();
+          this.productForm.reset();
         } else {
           this.errorMessageStatus = true;
           this.errorMessage = res.message;

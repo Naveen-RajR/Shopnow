@@ -18,7 +18,8 @@ exports.adminLogin = (req, res) => {
 };
 
 exports.createProduct = async (req, res) => {
-  let productObject = req.body;
+  let productObject =JSON.parse(req.body.productObject);
+  productObject.productImage=req.file.path
 
   let productidExist = await productModel.findOne({
     productId: productObject.productId,
