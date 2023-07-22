@@ -9,24 +9,15 @@ import { AdminService } from '../admin.service';
 export class NavigationComponent implements OnInit{
   constructor(public adminService:AdminService){}
   
-  // loginStatus;]
+ 
   
   ngOnInit(): void {
 
-    // this.adminService.isLoggedIn.subscribe((status)=>{
-
-      // this.loginStatus=status
 
     
   }
 
-  // login(){
-  //   this.adminService.loginButton();
-  // }
-
-  // logout(){
-  //   this.adminService.logoutUser()
-  // }
+  
 
 
 }

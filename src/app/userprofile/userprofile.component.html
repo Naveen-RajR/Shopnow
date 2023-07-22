@@ -30,16 +30,7 @@
     />
   </div>
 
-  <div class="child">
-    <button (click)="onSortChanged()">sort by price{{isAscending?' ⬆️' :' ⬇️'}}</button>
-  </div>
-
-  <div class="child">
-    <button routerLink="cart" type="button" class="checkout">
-      Checkout
-      <span class="badge text-bg-light count">{{ cartCount }}</span>
-    </button>
-  </div>
+  
 
 </div> -->
 
@@ -71,6 +62,16 @@
           <span class="badge text-bg-light count">{{ cartCount }}</span>
         </button>
       </div>
+      <!-- <div class="child">
+        <button (click)="onSortChanged()">sort by price{{isAscending?' ⬆️' :' ⬇️'}}</button>
+      </div>
+    
+      <div class="child">
+        <button routerLink="cart" type="button" class="checkout">
+          Checkout
+          <span class="badge text-bg-light count">{{ cartCount }}</span>
+        </button>
+      </div> -->
 
 
     </div>
@@ -79,10 +80,12 @@
 
 
 
-<div class="grid grid-container--fit ">
-  <div class="card m-1 shadow-sm" *ngFor="let product of filteredProducts">
-    <img class="img-fluid imageSize" src="{{product.productImage}}" alt="">
-    <div class="card-body">
+
+
+<div class="flexbox">
+  <div class="card m-1 shadow-sm flex-item" *ngFor="let product of filteredProducts">
+    <img  src="{{product.productImage}}" alt="" width="280px">
+    <div class="card-body flex-item">
       <h1 class="card-title fs-6 text-uppercase">
         {{ product.productName }}
       </h1>
@@ -107,7 +110,7 @@
   >
     No search results found!
   </div>
-</div>
+</div> 
 
 <!-- to edit user details -->
 <form

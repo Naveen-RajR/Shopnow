@@ -1,7 +1,4 @@
-/* nav{
-  /* background-color: rgb(0, 0, 0);   */
-  /* position: sticky; */
-/* } */ 
+
 
 
 a{
@@ -18,12 +15,8 @@ li a:hover{
 .active{
   color:#ffffff;
   font-weight: 1000;
-  background-color: #ffffff2e;
+  background-color: #ffffff1f;
   border-radius: 8px;
-  /* background-color: #40e0d0; */
-  /* border-radius: 7px; */
+  
 }
 
-/* span{
-  display: inline-block;
-} */

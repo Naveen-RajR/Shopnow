@@ -122,7 +122,7 @@ export class UserprofileComponent implements OnInit {
     this.adminService.updateUser(formValues).subscribe({
       next: (res) => {
         // console.log(res)
-        this.toastr.success('', 'Profile Updated🪄', {
+        this.toastr.success('', 'Profile Updated 🪄', {
           timeOut: 5000,
           positionClass: 'toast-top-right',
           closeButton: true,

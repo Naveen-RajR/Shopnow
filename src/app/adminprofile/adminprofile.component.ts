@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AdminService } from '../admin.service';
 import { UserService } from '../user.service';
@@ -8,19 +8,23 @@ import { UserService } from '../user.service';
   templateUrl: './adminprofile.component.html',
   styleUrls: ['./adminprofile.component.css'],
 })
+
 export class AdminprofileComponent implements OnInit {
   
   productForm: FormGroup;
   errorMessage!: '';
   errorMessageStatus!: boolean;
   products = [];
+  
   productCount:number;
   showTable: boolean = false;
   showCard: boolean = true;
+
   editProductStatus: boolean = false;
   editProductIndex: number;
   id: any;
   selectedFile:File;
+
   editTable: FormGroup;
   
   constructor(
@@ -51,11 +55,9 @@ export class AdminprofileComponent implements OnInit {
       productPrice: '',
       productRating: '',
     });
+
   }
 
-  // ngDoCheck(){
-  //   this.viewProducts();
-  // }
 
   //to toggle cart view
   showGrid() {
@@ -143,13 +145,13 @@ export class AdminprofileComponent implements OnInit {
     // console.log("updated Object",modifiedObject,modifiedObject._id)
     modifiedObject.id = this.id;
     
-    // console.log( modifiedObject.id = this.id)
+    // console.log(this.id, "from frontend")
 
     this.userService.editProduct(modifiedObject).subscribe({
       next: (res) => {
         console.log(res);
         this.viewProducts();
-        ``;
+        
       },
       error: (error) => {
         console.log(error);

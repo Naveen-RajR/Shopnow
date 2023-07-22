@@ -47,15 +47,19 @@ exports.getProducts = async (req, res) => {
   }
 };
 
+
+
 exports.editProducts = async (req, res) => {
   const updateProduct = await productModel.findByIdAndUpdate(
     req.params.id,
     req.body,
     {
       new: true,
-    //   runValidators: true,
+    
     }
   );
+  console.log(req.params.id)
+  console.log(updateProduct, "this is console")
   if (!updateProduct) {
     return res.send(error.message);
   }

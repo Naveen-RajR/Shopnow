@@ -63,22 +63,22 @@
       </tr>
     </thead>
     <tbody class="text-center">
-      <tr *ngFor="let product of products; let i = index">
-        <!-- <td>
-          <span *ngIf="!editProductStatus || editProductIndex !== i">{{
-            product.productId
-            }}</span>
-          <input *ngIf="editProductStatus && editProductIndex == i" type="text" class="form-control"
-            formControlName="productId" />
-        </td> -->
 
+      <tr *ngFor="let product of products; let i = index">
+        
         <td>
-          <span *ngIf="!editProductStatus || editProductIndex !== i">{{
+          <span *ngIf="!editProductStatus || editProductIndex !== i">
+            {{
             product.productName
-            }}</span>
+            }}
+          </span>
+
           <input *ngIf="editProductStatus && editProductIndex == i" type="text" class="form-control"
             formControlName="productName" />
         </td>
+        
+
+
         <td>
           <span *ngIf="!editProductStatus || editProductIndex !== i">{{
             product.description
@@ -86,6 +86,8 @@
           <input *ngIf="editProductStatus && editProductIndex == i" type="text" class="form-control"
             formControlName="description" />
         </td>
+
+
         <td>
           <span *ngIf="!editProductStatus || editProductIndex !== i">{{
             product.productPrice
@@ -93,6 +95,7 @@
           <input *ngIf="editProductStatus && editProductIndex == i" type="text" class="form-control"
             formControlName="productPrice" />
         </td>
+
         <td>
           <span *ngIf="!editProductStatus || editProductIndex !== i">{{
             product.productRating
@@ -107,15 +110,22 @@
               edit
             </button>
 
-            <button class="btn btn-outline-danger btn-sm" (click)="deleteProduct(product._id)">
+            <!-- <button class="btn btn-outline-danger btn-sm" (click)="deleteProduct(product._id)">
               Delete
-            </button>
+            </button> -->
           </span>
+
           <span *ngIf="editProductStatus && editProductIndex == i">
             <button class="btn btn-outline-success btn-sm" (click)="saveProduct()">
               save
             </button>
           </span>
+        </td>
+
+        <td>
+          <button class="btn btn-outline-danger btn-sm" (click)="deleteProduct(product._id)">
+            Delete
+          </button>
         </td>
 
         

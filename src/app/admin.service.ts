@@ -25,15 +25,7 @@ export class AdminService {
     return this.hp.post('/user/register',userInfo)
   }
 
-  // openSnackBar(message:any,action:any) {
-  //   this._snackBar.open(message,action, {
-  //     duration:  5000,
-  //     verticalPosition:'bottom',
-  //     horizontalPosition:'start'
-      
-  //   });
-  // }
-
+ 
   loginUser(loginData:any):Observable<any>{
     return this.hp.post('/user/login',loginData)
     
@@ -43,6 +35,9 @@ export class AdminService {
     return this.hp.post('/admin/login',(adminObj))
   }
 
+  get adminAuth(){
+    return false;
+  }
 
   logout(){
     localStorage.removeItem("token")
