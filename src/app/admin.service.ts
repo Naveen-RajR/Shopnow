@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 export class AdminService {
 
-  constructor(public hp: HttpClient, public _snackBar: MatSnackBar) { }
+  constructor(public hp: HttpClient) { }
   
   loginStatus=false;
   currentUser;

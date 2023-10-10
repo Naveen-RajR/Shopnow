@@ -1,6 +1,9 @@
 *{
     font-family: 'Nunito';
 }
+body{
+    overflow-y: scroll;
+}
 
 .card{
     overflow: hidden;
@@ -108,4 +111,17 @@
 
 .flexbox>div{
     margin: 20px;
+}
+
+
+
+
+.favourite{
+    color:red;
+}
+
+.fav:hover{
+    color: rgba(255, 0, 0, 0.587);  
+    font-size: 25px;
+    cursor: pointer;
 }

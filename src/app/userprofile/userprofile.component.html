@@ -4,7 +4,7 @@
 />
 
 
-
+<!-- Name, search checkout button  -->
 <div class="container mt-3">
   <div class="row">
     <div class="col-sm-12 col-md-6">
@@ -28,23 +28,11 @@
         (keyup)="filterSearch()"
         placeholder="search by product name "
         />
-        <button routerLink="cart" type="button" class="checkout mx-2">
+        <button  routerLink="cart" type="button" class="checkout mx-2">
           Checkout
           <span class="badge text-bg-light count">{{ cartCount }}</span>
         </button>
       </div>
-      <!-- <div class="child">
-        <button (click)="onSortChanged()">sort by price{{isAscending?' ⬆️' :' ⬇️'}}</button>
-      </div>
-    
-      <div class="child">
-        <button routerLink="cart" type="button" class="checkout">
-          Checkout
-          <span class="badge text-bg-light count">{{ cartCount }}</span>
-        </button>
-      </div> -->
-
-
     </div>
   </div>
 </div>
@@ -52,13 +40,18 @@
 
 
 
-
+<!-- cart view -->
 <div class="flexbox">
-  <div class="card m-1 shadow-sm flex-item" *ngFor="let product of filteredProducts">
+  <div class="card m-1 shadow-sm flex-item" *ngFor="let product of filteredProducts"  >
     <img  src="{{product.productImage}}" alt="" width="280px">
     <div class="card-body flex-item">
-      <h1 class="card-title fs-6 text-uppercase">
-        {{ product.productName }}
+      <h1 class="card-title fs-6 text-uppercase d-flex justify-content-between">
+        {{ product.productName }} 
+        <!-- <svg (click)="onToFavourite(currentUser._id,product)" [ngClass]="{'favourite':favouritesId?.includes(product.productId)}" fill="none" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" style="width: 20px;">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+          </svg> -->
+          <i class="fa-regular fa-heart fa-lg  fav" style="fill: #d1d1d1;" (click)="onToFavourite(currentUser._id,product)" [ngClass]="{'favourite':favouritesId?.includes(product.productId)}"></i>
+        <!-- (click)="onToFavourite(currentUser._id,product)" [ngClass]="{'favourite':favouritesId.includes(product.productId)}" -->
       </h1>
 
       <p class="card-text">{{ product.description }}</p>
@@ -77,11 +70,14 @@
   </div>
   <div
     class="text-center text-danger"
-    *ngIf="allproducts.length && filteredProducts.length == 0"
+    *ngIf="allproducts?.length && filteredProducts?.length == 0"
   >
     No search results found!
   </div>
 </div> 
+
+
+
 
 <!-- to edit user details -->
 <form
@@ -168,3 +164,21 @@
     </div>
   </div>
 </form>
+
+
+<!-- offcanvas -->
+<!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button> -->
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body" >
+    
+  </div>
+  <div class="canvas-end m-3 text-end ">
+    <button routerLink="" class="btn btn-warning font-monospace">View all</button>
+  </div>
+</div>
+

@@ -44,7 +44,7 @@ exports.login= expressAsyncHandler( async (req,res)=>{
       res.send({message:"Invaild password"})
     }
     else{
-      let signedJwtToken=jwt.sign({id:this._id},process.env.SECRET,{expiresIn:10})
+      let signedJwtToken=jwt.sign({id:this._id},process.env.SECRET,{expiresIn:'30d'})
 
       res.send({message:"success Login",token:signedJwtToken, user:userData})
     }

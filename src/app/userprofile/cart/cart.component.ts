@@ -35,7 +35,9 @@ export class CartComponent implements OnInit {
     this.cartService.getCartProduct(firstName).subscribe({
       next: (res) => {
         this.userProduct = res.data;
+        // console.log(res, 'cartProducts')
         this.cartProducts = this.userProduct?.products;
+        console.log(this.cartProducts, "cartproducts")
         this.cartItemsCount = res.count;
 
         // console.log('cart count', this.cartItemsCount);

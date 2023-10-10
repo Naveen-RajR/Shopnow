@@ -18,11 +18,11 @@ export class LoginComponent implements OnInit {
     public fb: FormBuilder,
     public router: Router,
     public adminService: AdminService,
-    public userService:UserService
+    public userService: UserService
   ) {}
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email:'',
+      email: '',
       password: '',
       type: '',
     });
@@ -36,9 +36,7 @@ export class LoginComponent implements OnInit {
           if (res.message == 'success Login') {
             this.errorMessageStatus = false;
             let token = res.token;
-            // console.log(token);
-            // console.log(res.user)
-            this.adminService.currentUser=res.user
+            this.adminService.currentUser = res.user;
             localStorage.setItem('token', token);
             this.router.navigateByUrl(`/userprofile/${res.user.firstName}`);
             this.adminService.loginStatus = true;
@@ -53,27 +51,25 @@ export class LoginComponent implements OnInit {
       });
     }
     //if admin
-    if(this.loginForm.value.type=="admin"){
+    if (this.loginForm.value.type == 'admin') {
       this.adminService.adminLogin(this.loginForm.value).subscribe({
-        next:(res)=>{
-          if(res.message=="login Success"){
-            this.errorMessageStatus=false;
-            let token =res.token;
+        next: (res) => {
+          if (res.message == 'login Success') {
+            this.errorMessageStatus = false;
+            let token = res.token;
             // console.log(token);
-            localStorage.setItem("token",token);
+            localStorage.setItem('token', token);
             this.router.navigateByUrl(`/adminprofile/${res.admin}`);
-            this.adminService.loginStatus=true;
-          }
-          else{
-            this.errorMessageStatus=true;
-            this.errorMessage=res.message;
+            this.adminService.loginStatus = true;
+          } else {
+            this.errorMessageStatus = true;
+            this.errorMessage = res.message;
           }
         },
-        error:(err)=>{
-          console.log(err)
-        }
-      })
-
+        error: (err) => {
+          console.log(err);
+        },
+      });
     }
   }
 }

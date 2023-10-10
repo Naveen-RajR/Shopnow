@@ -3,10 +3,11 @@ const mongoose=require('mongoose');
 const dotenv=require('dotenv');
 const app=express();
 const bodyParser=require('body-parser');
-const user=require('./Backend/APIS/api')
-const admin=require('./Backend/APIS/adminAPI')
-const cart=require('./Backend/APIS/cartapi')
-const path=require('path')
+const user=require('./Backend/APIS/api');
+const admin=require('./Backend/APIS/adminAPI');
+const cart=require('./Backend/APIS/cartapi');
+const favourite=require('./Backend/APIS/favapi');
+const path=require('path');
 dotenv.config()
 app.use(express.static(path.join(__dirname,'./dist/shopnow')))
 
@@ -28,6 +29,7 @@ app.use(bodyParser.json())
 app.use('/user',user)
 app.use('/admin',admin)
 app.use('/cart',cart)
+app.use('/favourite',favourite)
 
 app.get('/',(req,res)=>{
     res.send("welcome to backend")

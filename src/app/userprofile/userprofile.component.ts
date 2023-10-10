@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { json } from 'body-parser';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from '../admin.service';
 import { CartService } from '../cart.service';
@@ -18,12 +19,12 @@ export class UserprofileComponent implements OnInit {
   userProduct: any;
   cartProducts: any;
   editUserDetailsForm: FormGroup;
-  filteredProducts=[];
-  sortedProducts:any=[];
-  searchResult:''
-  isAscending:boolean=true;
-  
-  
+  filteredProducts = [];
+  sortedProducts: any = [];
+  searchResult: '';
+  isAscending: boolean = true;
+  userFavourites: any = [];
+  favouritesId;
 
   constructor(
     public userService: UserService,
@@ -31,15 +32,18 @@ export class UserprofileComponent implements OnInit {
     public cartService: CartService,
     public router: Router,
     public toastr: ToastrService,
-    public formBuilder: FormBuilder,
+    public formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): any {
     this.getProducts();
     this.currentUser = this.adminService.currentUser;
-    const firstName=this.adminService.currentUser.firstName;
-    console.log(firstName)
-    // console.log("user details",this.currentUser)
+    const firstName = this.adminService.currentUser.firstName;
+    const _id = this.adminService.currentUser._id;
+
+    this.viewFavourites(_id);
+
+    //to get cart products
     this.cartService.getCartProduct(firstName).subscribe({
       next: (res) => {
         this.userProduct = res['data'];
@@ -54,7 +58,6 @@ export class UserprofileComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
-        // alert("error in reading")
       },
     });
 
@@ -68,18 +71,17 @@ export class UserprofileComponent implements OnInit {
       email: userData.email,
       phoneNumber: userData.phoneNumber,
     });
-
-   
   }
 
   //to get list of total products
   getProducts() {
     this.userService.getProducts().subscribe({
       next: (res) => {
-        this.filteredProducts=res.data
+        this.filteredProducts = res.data;
         this.allproducts = res.data;
-        this.sortedProducts=this.allproducts
-        console.log(this.allproducts,'all products');
+        // this.userFavourites=this.filteredProducts;
+        this.sortedProducts = this.allproducts;
+        // console.log(this.allproducts, 'all products');
       },
       error: (error) => {
         console.log(error);
@@ -87,13 +89,13 @@ export class UserprofileComponent implements OnInit {
     });
   }
 
+  //add to cart
   addingToCart(firstName: any, cartProduct: any) {
     let cartObject = {
       firstName: firstName,
       products: [cartProduct],
     };
-    
-    console.log("this is cartObject", cartObject)
+    // console.log(cartObject, 'from frontend');
     this.cartService.addCart(cartObject).subscribe({
       next: (res) => {
         this.toastr.info('added to cart', '', {
@@ -115,10 +117,10 @@ export class UserprofileComponent implements OnInit {
     });
   }
 
+  // to save edited
   saveChanges() {
     const formValues = this.editUserDetailsForm.value;
-
-    console.log(formValues);
+    // console.log(formValues);
     this.adminService.updateUser(formValues).subscribe({
       next: (res) => {
         // console.log(res)
@@ -136,23 +138,60 @@ export class UserprofileComponent implements OnInit {
   }
 
   //to search
-  filterSearch(){
-    this.filteredProducts=this.allproducts.filter(
-      text=>text.productName.toLowerCase().includes(this.searchResult)
-    )
+  filterSearch() {
+    this.filteredProducts = this.allproducts.filter((text) =>
+      text.productName.toLowerCase().includes(this.searchResult)
+    );
   }
 
-  onSortChanged(){
-    this.isAscending=!this.isAscending
-    this.filteredProducts.sort((a,b)=>{
+  //for sorting
+  onSortChanged() {
+    this.isAscending = !this.isAscending;
+    this.filteredProducts.sort((a, b) => {
       // console.log(this.sortedProducts,"cloned array")
-      const priceA=a.productPrice;
-      const priceB=b.productPrice;
-      console.table(priceA,priceB)
-      return this.isAscending?priceA-priceB:priceB-priceA
-    })
+      const priceA = a.productPrice;
+      const priceB = b.productPrice;
+      // console.table(priceA, priceB);
+      return this.isAscending ? priceA - priceB : priceB - priceA;
+    });
   }
 
+  // adding to favouritee
+  onToFavourite(id: any, product: any) {
+    let favObject = {
+      _userid: id,
+      products: [product],
+    };
+    // console.log(favObject, 'favobject');
 
+    this.cartService.toFav(favObject).subscribe({
+      next: (res) => {
+        // console.log(res);
+        this.viewFavourites(this.currentUser._id);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 
+  // viewFavourites
+  viewFavourites(_id: any) {
+    // console.log(_id, "view favourites")
+    this.cartService.getFavProduct(_id).subscribe({
+      next: (res) => {
+        // console.log(res.data ,"data response")
+        // console.log(res.data[0]?.products, '0th index');
+        this.userFavourites = res.data[0]?.products;
+        this.isFavourite();
+      },
+    });
+  }
+
+  isFavourite() {
+    this.favouritesId = this.userFavourites?.map(
+      (product) => product.productId
+    );
+    // console.log(this.favouritesId, 'jikj');
+  }
 }

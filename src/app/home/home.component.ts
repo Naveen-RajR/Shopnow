@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component,Input,OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +39,4 @@ export class HomeComponent implements OnInit {
   changeAccordion(ac: any) {
     this.view_accordion = ac;
   }
-
-
 }
-

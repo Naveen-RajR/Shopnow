@@ -5,6 +5,7 @@ const dotenv=require('dotenv')
 dotenv.config()
 const cloudinary=require('cloudinary').v2
 const {CloudinaryStorage}=require('multer-storage-cloudinary');
+const verifyToken=require('../Middleware/verifyToken')
 
 cloudinary.config({ 
     cloud_name: 'storage01', 
@@ -33,12 +34,12 @@ adminApp.post('/login',adminLogin)
 adminApp.post('/createProduct',upload.single("productImage"),createProduct)
 
 //get
-adminApp.get('/getProducts',getProducts)
+adminApp.get('/getProducts',verifyToken, getProducts)
 
 //edit
 adminApp.put("/:id",editProducts)
 
-
+//delete
 adminApp.delete('/:id',deleteProduct)
 
 

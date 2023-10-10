@@ -5,77 +5,90 @@
 <hr> -->
 
 <section>
+  <h1 class="text-center mt-2 mb-2">Create Your Account ID</h1>
 
-<h1 class="text-center mt-2 mb-2">Create Your Account ID</h1> 
-
-<form class="mx-auto w-50" [formGroup]="userForm" #ref="ngForm" (ngSubmit)="onFormSubmit()">
-  <div class="row mb-2">
-    <div class="col">
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="first name"
-          formControlName="firstName"
-        />
-        <label for="floatingInput">first name</label>
+  <form
+    class="mx-auto w-50"
+    [formGroup]="userForm"
+    #ref="ngForm"
+    (ngSubmit)="onFormSubmit()"
+  >
+    <div class="row mb-2 row-cols-md-2 row-cols-sm-1 row-cols-1">
+      <div class="col">
+        <div class="form-floating mb-2">
+          <input
+            type="text"
+            id="floatingInput"
+            class="form-control"
+            placeholder="first name"
+            formControlName="firstName"
+          />
+          <label for="floatingInput">first name</label>
+        </div>
+      </div> 
+      <div class="col">
+        <div class="form-floating">
+          <input
+            type="text"
+            id="floatinglast"
+            class="form-control"
+            placeholder="last name"
+            formControlName="lastName"
+          />
+          <label for="floatinglast">last name</label>
+        </div>
       </div>
     </div>
-    <div class="col">
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="last name"
-          formControlName="lastName"
-        />
-        <label for="floatingInput">last name</label>
-      </div>
+
+    <div class=" form-floating mb-2">
+      
+      <select class="form-select" formControlName="country" id="floatingSelect">
+        <option selected>select country</option>
+        <option value="india" >India</option>
+        <option value="america">America</option>
+        <option value="Japan">Japan</option>
+      </select>
+      <label for="floatingSelect">Country</label>
+
     </div>
-  </div>
+    <div class="mb-2 form-floating">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="email"
+        formControlName="email"
+      />
+      <label for="floatingInput">email</label>
+      <p class="userID">This will be your user ID</p>
+    </div>
+    <div class="mb-2 form-floating">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="phone number"
+        formControlName="phoneNumber"
+      />
+      <label for="floatingphone">phone number</label>
+    </div>
+    <div class="mb-2 form-floating">
+      <input
+        id="floatingpassword"
+        type="password"
+        class="form-control"
+        placeholder="password"
+        formControlName="password"
+      />
+      <label for="floatingpassword">password</label>
+    </div>
 
-  <div class="mb-2">
-    <label for="">COUNTRY</label>
-    <select class="form-select form-select-lg" formControlName="country">
-      <option value="india" selected>India</option>
-      <option value="america">America</option>
-      <option value="Japan">Japan</option>
-    </select>
-  </div>
-  <div class="mb-2 form-floating">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="email"
-      formControlName="email"
-    />
-    <label for="floatingInput">email</label>
-    <p class="userID">This will be your user ID</p>
-  </div>
-  <div class="mb-2 form-floating">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="phone number"
-      formControlName="phoneNumber"
-    />
-    <label for="floatingInput">phone number</label>
-  </div>
-  <div class="mb-2 form-floating">
-    <input
-      type="password"
-      class="form-control"
-      placeholder="password"
-      formControlName="password"
-    />
-    <label for="floatingInput">password</label>
-  </div>
+    <p *ngIf="errorMessage" class="errorMessage">{{ errorMessage }}</p>
 
-  <p *ngIf="errorMessage" class="errorMessage">{{errorMessage}}</p>
-
-  <div class="mb-3 text-center">
-    <button class="" type="submit"  >Continue</button> <span class="loginlink" (click)="loginRedirect()">Already having account?  <a class="actualLink">login here</a></span>
-  </div>
-</form>
-
+    <div class="mb-3 text-center">
+      <button class="" type="submit">Continue</button>
+      <span class="loginlink" (click)="loginRedirect()"
+        >Already having account? <a class="actualLink">login here</a></span
+      >
+    </div>
+  </form>
 </section>
+
