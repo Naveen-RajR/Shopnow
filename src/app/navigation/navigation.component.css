@@ -1,22 +1,17 @@
-
-
-
-a{
+a {
   color: rgb(219, 219, 219);
 }
 
-li a:hover{
-  background-color:#ffffff42;
-  
-  color: rgb(255, 255, 255);
+li a:hover {
+  background-color: #ffffff42;
+
+  color: #ffffff;
   border-radius: 5px;
 }
 
-.active{
-  color:#ffffff;
+.active {
+  color: #ffffff;
   font-weight: 1000;
   background-color: #ffffff1f;
   border-radius: 8px;
-  
 }
-

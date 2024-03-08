@@ -1,23 +1,24 @@
 label{
-    color: grey;
+    color: #808080;
     margin-left: 3px;
 }
 
+
 button{
     display: block;
-    background-color:#0070c9;
+    background-color:#000000;
     margin-top: 20px;
     padding: 6px 12px;
-    border: 1px solid rgb(63, 79, 255);
+    border: 1px solid #000000;
     border-radius: 3px;
-    color: white;
+    color: #ffffff;
     font-size: 18px;
     font-weight: 400;
     cursor: pointer;
 
 }
 button:hover{
-    background-color: #0779d6;
+    background-color: #000000c5;
 }
 
 select[_ngcontent-khj-c8] {
@@ -27,7 +28,7 @@ select[_ngcontent-khj-c8] {
 
 
 option{
-    color: grey;
+    color: #808080;
 }
 
 p a{
@@ -53,7 +54,7 @@ p a:hover{
 
 
 .errorMessage{
-    color: rgb(243, 73, 107);
+    color: #f3496b;
     font-weight: 600;
 }
 
@@ -71,7 +72,7 @@ p a:hover{
 }
 
 .actualLink{
-    color:rgb(232, 60, 95);
+    color:#e83c5f;
     cursor: pointer;
     
 }

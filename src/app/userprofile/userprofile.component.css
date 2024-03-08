@@ -70,12 +70,12 @@ body{
 
 .checkout:hover{
     background: #333333e8;
-    color: white;
+    color: #ffffff;
 
 }
 
 .count{
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 50%;
     color: black;
     margin: 3px;

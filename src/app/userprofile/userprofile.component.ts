@@ -9,7 +9,7 @@ import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-userprofile',
-  templateUrl: './userprofile.component.html',
+  templateUrl:'./userprofile.component.html',
   styleUrls: ['./userprofile.component.css'],
 })
 export class UserprofileComponent implements OnInit {
@@ -24,7 +24,7 @@ export class UserprofileComponent implements OnInit {
   searchResult: '';
   isAscending: boolean = true;
   userFavourites: any = [];
-  favouritesId;
+  favouritesId: any;
 
   constructor(
     public userService: UserService,

@@ -1,5 +1,6 @@
-import {  Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { AdminService } from '../admin.service';
 import { UserService } from '../user.service';
 
@@ -8,35 +9,32 @@ import { UserService } from '../user.service';
   templateUrl: './adminprofile.component.html',
   styleUrls: ['./adminprofile.component.css'],
 })
-
 export class AdminprofileComponent implements OnInit {
-  
   productForm: FormGroup;
   errorMessage!: '';
   errorMessageStatus!: boolean;
   products = [];
-  
-  productCount:number;
+
+  productCount: number;
   showTable: boolean = false;
   showCard: boolean = true;
 
   editProductStatus: boolean = false;
   editProductIndex: number;
   id: any;
-  selectedFile:File;
+  selectedFile: File;
 
   editTable: FormGroup;
-  
+
   constructor(
     public fb: FormBuilder,
     public userService: UserService,
     public adminService: AdminService
   ) {}
-  
-  
+
   ngOnInit(): any {
     this.viewProducts();
-    
+
     //for creating
     this.productForm = this.fb.group({
       productId: '',
@@ -44,7 +42,7 @@ export class AdminprofileComponent implements OnInit {
       description: '',
       productPrice: '',
       productRating: '',
-      productImage:''
+      productImage: '',
     });
 
     //for editing
@@ -55,9 +53,7 @@ export class AdminprofileComponent implements OnInit {
       productPrice: '',
       productRating: '',
     });
-
   }
-
 
   //to toggle cart view
   showGrid() {
@@ -78,24 +74,23 @@ export class AdminprofileComponent implements OnInit {
     }
   }
 
-  onFileSelected(event:any){
-    this.selectedFile=event.target.files[0];
-
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
   }
 
   //adding product
   onProductFormSubmit() {
     // console.log(this.productForm.value);
     const productObject = this.productForm.value;
-    const formData=new FormData()
-    formData.append('productObject',JSON.stringify(productObject))
-    formData.append('productImage',this.selectedFile)
+    const formData = new FormData();
+    formData.append('productObject', JSON.stringify(productObject));
+    formData.append('productImage', this.selectedFile);
     this.userService.createProduct(formData).subscribe({
       next: (res) => {
         if (res.message == 'Product added') {
           this.errorMessageStatus = false;
           // alert("product added")
-          console.log(res)
+          console.log(res);
           this.viewProducts();
           this.productForm.reset();
         } else {
@@ -124,7 +119,7 @@ export class AdminprofileComponent implements OnInit {
   }
 
   //edit operation
-  editProduct(index:any, product:any) {
+  editProduct(index: any, product: any) {
     this.editProductStatus = true;
     this.editProductIndex = index;
     this.id = product._id;
@@ -144,14 +139,13 @@ export class AdminprofileComponent implements OnInit {
     let modifiedObject = this.editTable.value;
     // console.log("updated Object",modifiedObject,modifiedObject._id)
     modifiedObject.id = this.id;
-    
+
     // console.log(this.id, "from frontend")
 
     this.userService.editProduct(modifiedObject).subscribe({
       next: (res) => {
         console.log(res);
         this.viewProducts();
-        
       },
       error: (error) => {
         console.log(error);

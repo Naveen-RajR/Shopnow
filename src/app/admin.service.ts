@@ -4,51 +4,43 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class AdminService {
+  constructor(public hp: HttpClient) {}
 
-  constructor(public hp: HttpClient) { }
-  
-  loginStatus=false;
+  loginStatus = false;
   currentUser;
 
-
-
-  getProducts():Observable<any>{
-    return this.hp.get('https://fakestoreapi.com/products')
-
+  getProducts(): Observable<any> {
+    return this.hp.get('https://fakestoreapi.com/products');
   }
 
-  createUser(userInfo:any):Observable<any>{
-    return this.hp.post('/user/register',userInfo)
+  createUser(userInfo: any): Observable<any> {
+    return this.hp.post('/user/register', userInfo);
   }
 
- 
-  loginUser(loginData:any):Observable<any>{
-    return this.hp.post('/user/login',loginData)
-    
-  }
-  
-  adminLogin(adminObj:any):Observable<any>{
-    return this.hp.post('/admin/login',(adminObj))
+  loginUser(loginData: any): Observable<any> {
+    return this.hp.post('/user/login', loginData);
   }
 
-  get adminAuth(){
+  adminLogin(adminObj: any): Observable<any> {
+    return this.hp.post('/admin/login', adminObj);
+  }
+
+  get adminAuth() {
     return false;
   }
 
-  logout(){
-    localStorage.removeItem("token")
-    this.loginStatus=false;
+  logout() {
+    localStorage.removeItem('token');
+    this.loginStatus = false;
   }
 
-  updateUser(payload):Observable<any>{
-    console.log("from service",payload)
-    return this.hp.put(`/user/${this.currentUser._id}`,payload)
+  updateUser(payload): Observable<any> {
+    console.log('from service', payload);
+    return this.hp.put(`/user/${this.currentUser._id}`, payload);
   }
-  
 
   // isLoggedIn=new BehaviorSubject(false);
 
@@ -59,9 +51,4 @@ export class AdminService {
   // logoutUser(){
   //   this.isLoggedIn.next(false);
   // }
-
- 
-
-
-
 }
